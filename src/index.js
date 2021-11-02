@@ -15,6 +15,9 @@ app.use(require('./routes/album'))
 app.use(require('./routes/album_images'))
 app.use(require('./routes/followers'))
 
+//Login route
+app.use(require('./routes/login'))
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log('HalconBucket Server running on port ' + PORT)
 })

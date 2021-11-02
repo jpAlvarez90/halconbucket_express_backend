@@ -9,8 +9,10 @@
   "author": "jp",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mariadb": "^2.5.4",
     "mysql": "^2.18.1",
     "web-push": "^3.4.5"
