@@ -19,8 +19,9 @@ router.post('/login', async (req, res) => {
         if (!match) return res.status(500).json({ 'Error': 'The password does not match' })
 
         const token = getToken(results[0].user_id, results[0].username, results[0].email, results[0].role_fk_id)
-
-        return res.status(200).json({ token })
+        let role = results[0].role_fk_id == 1 ? 'ADMIN' : 'USER';
+        return res.status(200).json({ token, 'user': { user_id: results[0].user_id, 
+            username: results[0].username, email: results[0].email, role } })
     })
 })
 
@@ -37,7 +38,7 @@ router.post('/register', async (req, res) => {
                 return res.status(500).json({ 'Error': 'User not inserted' })
             }
             const token = getToken(results.insertId, username, email, role_fk_id)
-            return res.status(200).json({ token })
+            return res.status(200).json({ token, 'user': { username, email, role : 'USER' } })
         })
     })
 })

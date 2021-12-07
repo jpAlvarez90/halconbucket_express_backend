@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 
 const app = express()
 
@@ -7,6 +8,7 @@ const PORT = 3000
 // Middlewares
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(cors())
 
 // Routes
 app.use(require('./routes/roles'))
@@ -19,5 +21,5 @@ app.use(require('./routes/followers'))
 app.use(require('./routes/login'))
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log('HalconBucket Server running on port ' + PORT)
+    console.log(`HalconBucket Server running on port ${PORT}`)
 })

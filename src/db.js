@@ -2,7 +2,7 @@ const mysql = require('mysql')
 
 module.exports = mysql.createConnection({
     host: 'localhost', 
-    user: 'TestUser',
+    user: 'root',
     password: 'root',
     database: 'halcon_bucket'
 })

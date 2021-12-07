@@ -10,10 +10,18 @@ router.get('/get-albums', (req, res) => {
     })
 })
 
-router.get('/gel-album/:album_id', (req, res) => {
+router.get('/get-album/:album_id', (req, res) => {
     connection.query('SELECT * FROM album WHERE album_id = ?', req.params.album_id, (errors, results, fields) => {
         if (errors) return res.status(500).json(errors)
         return res.status(200).json({ result: results[0] })
+    })
+})
+
+router.get('/get-album-by-user/:user_fk_id', (req, res) => {
+    connection.query('SELECT * FROM album a JOIN user u ON a.user_fk_id = u.user_id WHERE user_fk_id = ?',
+     req.params.user_fk_id, (errors, results, fields) => {
+        if (errors) return res.status(500).json(errors)
+        return res.status(200).json({ result: results })
     })
 })
 
